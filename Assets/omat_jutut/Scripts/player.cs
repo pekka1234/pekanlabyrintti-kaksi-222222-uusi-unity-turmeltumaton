@@ -6,7 +6,9 @@ public class player : MonoBehaviour
 {
 
   public Animator anim;
-    // Start is called before the first frame update
+
+
+private float horisontaalinenPyorinta = 0;
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
@@ -19,7 +21,11 @@ public class player : MonoBehaviour
       float horizontal = Input.GetAxis("Horizontal") * 5;
       float vertical = Input.GetAxis("Vertical") * 5;  
       Vector3 nopeus = new Vector3(horizontal, 0, vertical);
+horisontaalinenPyorinta += Input.GetAxis("Mouse X") * 3;
+transform.localRotation = Quaternion.Euler(0, horisontaalinenPyorinta, 0);
 
+
+// ANIMAATIO ALUE, VIELÄ ON RIKKI
       hahmokontrolleri.SimpleMove(nopeus);
       hahmokontrolleri.Move(nopeus * Time.deltaTime);
       if(Input.GetAxis("Vertical") != 0)
