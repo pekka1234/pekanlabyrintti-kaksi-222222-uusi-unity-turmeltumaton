@@ -21,6 +21,8 @@ private float horisontaalinenPyorinta = 0;
       float horizontal = Input.GetAxis("Horizontal") * 5;
       float vertical = Input.GetAxis("Vertical") * 5;  
       Vector3 nopeus = new Vector3(horizontal, 0, vertical);
+nopeus = transform.rotation * nopeus;
+
 horisontaalinenPyorinta += Input.GetAxis("Mouse X") * 3;
 transform.localRotation = Quaternion.Euler(0, horisontaalinenPyorinta, 0);
 
